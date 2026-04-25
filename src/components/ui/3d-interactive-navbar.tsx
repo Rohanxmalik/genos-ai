@@ -497,7 +497,7 @@ export function Navbar() {
 
   return (
     <header
-      className={`site-header fixed top-0 left-0 right-0 z-100 px-[3vw] py-6 transition-all duration-300 ${
+      className={`site-header fixed top-0 left-0 right-0 z-[100] px-[3vw] py-6 transition-all duration-300 ${
         scrolled
           ? "bg-bg-dark/80 backdrop-blur-xl border-b border-white/6 py-4"
           : "bg-transparent"

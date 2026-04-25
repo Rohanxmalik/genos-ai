@@ -1,5 +1,5 @@
 'use client';
-import { useRef, useEffect, HTMLAttributes } from 'react';
+import { useRef, useEffect, useState, HTMLAttributes } from 'react';
 
 interface SpotlightConfig {
   radius?: number;
@@ -8,10 +8,11 @@ interface SpotlightConfig {
   smoothing?: number;
 }
 
-const useSpotlightEffect = (config: SpotlightConfig) => {
+const useSpotlightEffect = (config: SpotlightConfig, enabled: boolean) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    if (!enabled) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -89,7 +90,7 @@ const useSpotlightEffect = (config: SpotlightConfig) => {
       window.removeEventListener('mouseleave', handleMouseLeave);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [config.radius, config.brightness, config.color, config.smoothing]);
+  }, [config.radius, config.brightness, config.color, config.smoothing, enabled]);
 
   return canvasRef;
 };
@@ -103,6 +104,12 @@ export function SpotlightCursor({
   className,
   ...rest
 }: SpotlightCursorProps) {
+  const [isFinePointer, setIsFinePointer] = useState(false);
+
+  useEffect(() => {
+    setIsFinePointer(window.matchMedia('(pointer: fine)').matches);
+  }, []);
+
   const spotlightConfig: SpotlightConfig = {
     radius: 200,
     brightness: 0.15,
@@ -111,7 +118,9 @@ export function SpotlightCursor({
     ...config,
   };
 
-  const canvasRef = useSpotlightEffect(spotlightConfig);
+  const canvasRef = useSpotlightEffect(spotlightConfig, isFinePointer);
+
+  if (!isFinePointer) return null;
 
   return (
     <canvas

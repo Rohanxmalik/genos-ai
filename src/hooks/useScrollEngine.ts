@@ -11,6 +11,18 @@ export function useScrollEngine() {
   const lenisRef = useRef<Lenis | null>(null)
 
   useEffect(() => {
+    // Skip Lenis on touch devices — native momentum scroll is faster and ScrollTrigger
+    // works directly against window scroll. Lenis on mobile causes jitter and breaks
+    // ScrollTrigger updates.
+    const isTouch =
+      window.matchMedia('(pointer: coarse)').matches ||
+      'ontouchstart' in window
+
+    if (isTouch) {
+      const refreshId = window.setTimeout(() => ScrollTrigger.refresh(), 100)
+      return () => window.clearTimeout(refreshId)
+    }
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),

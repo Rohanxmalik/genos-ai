@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Instrument_Serif } from "next/font/google";
 import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
 import { EtheralShadowBg } from "@/components/ui/etheral-shadow-bg";
@@ -90,6 +90,14 @@ export const metadata: Metadata = {
       "Custom AI chatbots, voice AI, workflow automation & intelligent systems for businesses worldwide.",
     images: ["/og-image.png"],
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: "#0A0A0F",
 };
 
 const jsonLdScripts = [
