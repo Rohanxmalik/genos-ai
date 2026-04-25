@@ -3,10 +3,9 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import gsap from "gsap";
 import { motion } from "framer-motion";
-import { SplineScene } from "@/components/ui/splite";
 import { Card } from "@/components/ui/card";
 import { Spotlight } from "@/components/ui/spotlight";
-import { EtheralShadow } from "@/components/ui/etheral-shadow";
+import { DitheringBackground } from "@/components/ui/hero-dithering-card";
 import { smoothScrollTo } from "@/lib/smoothScroll";
 
 export function HeroSection() {
@@ -93,31 +92,31 @@ export function HeroSection() {
       aria-label="GenosAI - AI Automation Agency"
     >
       <Card className="w-full h-full bg-transparent border-0 rounded-none relative overflow-hidden">
-        {/* Etheral Shadow animated background */}
-        <div className="absolute inset-0 z-0">
-          <EtheralShadow
-            color="rgba(255, 255, 255, 0.06)"
-            animation={{ scale: 80, speed: 60 }}
-            noise={{ opacity: 0.6, scale: 1.2 }}
-            sizing="fill"
+        {/* Dithering shader background — subtle violet tint, matches site palette */}
+        <div className="absolute inset-0 z-0 pointer-events-none mix-blend-screen opacity-[0.18]">
+          <DitheringBackground
+            colorFront="#6d28d9"
+            colorBack="#00000000"
+            shape="warp"
+            type="4x4"
+            speed={0.18}
           />
-          {/* Secondary shadow layer for purple accent */}
-          <div className="absolute inset-0" style={{ mixBlendMode: "screen" }}>
-            <EtheralShadow
-              color="rgba(255, 255, 255, 0.04)"
-              animation={{ scale: 60, speed: 40 }}
-              noise={{ opacity: 0, scale: 1 }}
-              sizing="fill"
-            />
-          </div>
         </div>
+        {/* Soft radial vignette to focus center */}
+        <div
+          className="absolute inset-0 z-1 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, transparent 0%, transparent 40%, rgba(10,10,15,0.55) 100%)",
+          }}
+        />
 
         <Spotlight className="z-[2]" size={400} />
 
-        <div className="flex h-full">
-          {/* Left content */}
-          <div className="flex-1 p-8 md:p-16 relative z-10 flex flex-col justify-center">
-            <span className="section-label block text-[0.7rem] font-semibold tracking-[0.2em] uppercase text-violet-400/70 mb-8">
+        <div className="flex h-full items-center justify-center">
+          {/* Centered content */}
+          <div className="max-w-5xl w-full px-6 md:px-12 relative z-10 flex flex-col justify-center items-center text-center mx-auto">
+            <span className="section-label block text-[0.7rem] font-semibold tracking-[0.2em] uppercase text-violet-400/70 mb-6">
               AI AUTOMATION AGENCY
             </span>
             {/* Semantic h1 for crawlers and LLMs */}
@@ -127,7 +126,7 @@ export function HeroSection() {
             </h1>
             <div
               aria-hidden="true"
-              className="font-display text-[clamp(2.5rem,6vw,6rem)] font-normal leading-[0.92] tracking-[-0.03em] mb-6"
+              className="font-display text-[clamp(2.5rem,6vw,5.5rem)] font-normal leading-[0.95] tracking-[-0.03em] mb-8 max-w-4xl mx-auto"
             >
               <span className="hero-word inline-block bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
                 We
@@ -175,13 +174,13 @@ export function HeroSection() {
                 ))}
               </span>
             </div>
-            <p className="hero-subheadline text-[1.05rem] md:text-[1.15rem] leading-[1.6] text-white/50 max-w-[42ch]">
+            <p className="hero-subheadline text-[1.05rem] md:text-[1.15rem] leading-[1.7] text-white/55 max-w-[58ch] mx-auto">
               GenosAI is a global AI automation agency trusted by clients across
               the globe. We build custom AI chatbots, voice AI agents, workflow
               automation systems, and intelligent business platforms, engineered
               to eliminate manual operations and scale with your growth.
             </p>
-            <div className="hero-cta flex flex-wrap gap-4 mt-8">
+            <div className="hero-cta flex flex-wrap gap-4 mt-10 justify-center">
               <a
                 href="#contact"
                 onClick={smoothScrollTo}
@@ -197,14 +196,6 @@ export function HeroSection() {
                 See Our Services
               </a>
             </div>
-          </div>
-
-          {/* Right content — Spline 3D */}
-          <div className="flex-1 relative hidden md:block">
-            <SplineScene
-              scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-              className="w-full h-full"
-            />
           </div>
         </div>
 
