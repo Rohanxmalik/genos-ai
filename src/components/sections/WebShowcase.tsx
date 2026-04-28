@@ -51,54 +51,36 @@ export function WebShowcase() {
   const sectionRef = useRef<HTMLElement>(null)
   const videoEls = useRef<(HTMLVideoElement | null)[]>([])
   const [activeIndex, setActiveIndex] = useState(0)
-  const isAnimating = useRef(false)
-  const activeRef = useRef(0) // mirror of activeIndex for use in callbacks
 
   const slideTo = useCallback((rawIndex: number) => {
-    if (isAnimating.current) return
     const newIndex = ((rawIndex % TOTAL) + TOTAL) % TOTAL
-    if (newIndex === activeRef.current) return
+    setActiveIndex(newIndex)
+  }, [])
 
-    isAnimating.current = true
-
-    // Pause all, play new center
+  // Drive video playback off activeIndex changes
+  useEffect(() => {
     videoEls.current.forEach((v, i) => {
       if (!v) return
-      if (i === newIndex) {
+      if (i === activeIndex) {
         v.currentTime = 0
         v.play().catch(() => {})
       } else {
         v.pause()
       }
     })
+  }, [activeIndex])
 
-    activeRef.current = newIndex
-    setActiveIndex(newIndex)
-
-    setTimeout(() => {
-      isAnimating.current = false
-    }, 850)
-  }, [])
-
-  // Play first video on mount
-  useEffect(() => {
-    const first = videoEls.current[0]
-    if (first) {
-      first.play().catch(() => {})
-    }
-  }, [])
-
-  // Attach ended listener to the active video
+  // Attach ended listener to the active video for auto-advance
   useEffect(() => {
     const video = videoEls.current[activeIndex]
     if (!video) return
 
     const onEnded = () => {
-      slideTo(activeIndex + 1)
+      setActiveIndex((prev) => (prev + 1) % TOTAL)
     }
     video.addEventListener('ended', onEnded)
     return () => video.removeEventListener('ended', onEnded)
-  }, [activeIndex, slideTo])
+  }, [activeIndex])
 
   // Section entrance animation
   useEffect(() => {
@@ -154,36 +136,15 @@ export function WebShowcase() {
         </div>
 
         {/* Carousel */}
-        <div className="carousel-wrapper relative overflow-hidden">
-          {/* Edge fades */}
-          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-20 md:w-36 z-10 bg-gradient-to-r from-[#09090b] to-transparent" />
-          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-20 md:w-36 z-10 bg-gradient-to-l from-[#09090b] to-transparent" />
-
+        <div className="carousel-wrapper relative">
           {/* Cards — each card is a stable DOM element, positioned via left% */}
-          <div className="relative w-full" style={{ paddingBottom: `${CARD_WIDTH * (9 / 16) + 6}%` }}>
-            {/* Prev / Next arrows — inside the aspect-ratio box so they center on the cards */}
-            <button
-              type="button"
-              onClick={() => slideTo(activeIndex - 1)}
-              aria-label="Previous slide"
-              style={{ touchAction: 'manipulation' }}
-              className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/[0.12] bg-black/40 backdrop-blur-md text-white/80 hover:text-white hover:bg-black/60 hover:border-white/20 active:bg-black/70 transition-colors duration-300 flex items-center justify-center"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <polyline points="15 18 9 12 15 6" />
-              </svg>
-            </button>
-            <button
-              type="button"
-              onClick={() => slideTo(activeIndex + 1)}
-              aria-label="Next slide"
-              style={{ touchAction: 'manipulation' }}
-              className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/[0.12] bg-black/40 backdrop-blur-md text-white/80 hover:text-white hover:bg-black/60 hover:border-white/20 active:bg-black/70 transition-colors duration-300 flex items-center justify-center"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <polyline points="9 18 15 12 9 6" />
-              </svg>
-            </button>
+          <div
+            className="relative w-full overflow-hidden"
+            style={{ paddingBottom: `${CARD_WIDTH * (9 / 16) + 6}%` }}
+          >
+            {/* Edge fades (inside the clipped area so cards fade at edges) */}
+            <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-20 md:w-36 z-10 bg-gradient-to-r from-[#09090b] to-transparent" />
+            <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-20 md:w-36 z-10 bg-gradient-to-l from-[#09090b] to-transparent" />
 
             {WEB_DESIGNS.map((design, i) => {
               const offset = ringOffset(activeIndex, i)
@@ -270,6 +231,36 @@ export function WebShowcase() {
               )
             })}
           </div>
+
+          {/* Prev / Next arrows — siblings of the clipped card box, so card stacking can't intercept taps */}
+          <button
+            type="button"
+            onClick={() => slideTo(activeIndex - 1)}
+            aria-label="Previous slide"
+            style={{
+              touchAction: 'manipulation',
+              top: `calc(${(CARD_WIDTH * (9 / 16) + 6) / 2}% + 1.25rem)`,
+            }}
+            className="absolute left-2 md:left-6 -translate-y-1/2 z-50 w-11 h-11 md:w-12 md:h-12 rounded-full border border-white/15 bg-black/50 backdrop-blur-md text-white/85 hover:text-white hover:bg-black/70 hover:border-white/25 active:bg-black/80 transition-colors duration-300 flex items-center justify-center"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            onClick={() => slideTo(activeIndex + 1)}
+            aria-label="Next slide"
+            style={{
+              touchAction: 'manipulation',
+              top: `calc(${(CARD_WIDTH * (9 / 16) + 6) / 2}% + 1.25rem)`,
+            }}
+            className="absolute right-2 md:right-6 -translate-y-1/2 z-50 w-11 h-11 md:w-12 md:h-12 rounded-full border border-white/15 bg-black/50 backdrop-blur-md text-white/85 hover:text-white hover:bg-black/70 hover:border-white/25 active:bg-black/80 transition-colors duration-300 flex items-center justify-center"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
 
           {/* Dot indicators */}
           <div className="flex justify-center gap-2.5 mt-8">
