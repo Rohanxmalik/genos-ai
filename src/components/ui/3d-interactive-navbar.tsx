@@ -3,6 +3,7 @@
 import { ReactNode, useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import React from "react";
+import Link from "next/link";
 import ButtonWithIconDemo from "@/components/ui/button-witn-icon";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { MeshReflectorMaterial, RoundedBox, Html } from "@react-three/drei";
@@ -345,7 +346,7 @@ type NavItem = {
 };
 
 const navItems: NavItem[] = [
-  { title: "SERVICES", href: "#services" },
+  { title: "SERVICES", href: "/services" },
   { title: "HOW WE WORK", href: "#process" },
   { title: "ABOUT", href: "#about" },
   { title: "FAQ", href: "#faq" },
@@ -364,27 +365,40 @@ function NavbarItem({
 }) {
   const [isHovered, setIsHovered] = useState(false);
 
-  return (
-    <a
-      href={item.href}
-      onClick={onClick}
-      className={`hidden md:inline relative whitespace-nowrap transition-colors ${
-        isActive ? "text-white" : "hover:text-white"
-      }`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+  const className = `hidden md:inline relative whitespace-nowrap transition-colors ${
+    isActive ? "text-white" : "hover:text-white"
+  }`;
+
+  const inner = (
+    <span
+      className="inline-block relative whitespace-nowrap"
+      style={{ width: `${item.title.length}ch` }}
     >
-      <span
-        className="inline-block relative whitespace-nowrap"
-        style={{ width: `${item.title.length}ch` }}
-      >
-        {isHovered ? (
-          <DecryptEffect text={item.title} />
-        ) : (
-          <span className="font-medium">{item.title}</span>
-        )}
-      </span>
-    </a>
+      {isHovered ? (
+        <DecryptEffect text={item.title} />
+      ) : (
+        <span className="font-medium">{item.title}</span>
+      )}
+    </span>
+  );
+
+  const handlers = {
+    onMouseEnter: () => setIsHovered(true),
+    onMouseLeave: () => setIsHovered(false),
+  };
+
+  if (item.href.startsWith("#")) {
+    return (
+      <a href={item.href} onClick={onClick} className={className} {...handlers}>
+        {inner}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={item.href} className={className} {...handlers}>
+      {inner}
+    </Link>
   );
 }
 
@@ -523,6 +537,18 @@ export function Navbar() {
               onClick={handleAnchorClick}
             />
           ))}
+          <Link
+            href="/about"
+            className="hidden md:inline whitespace-nowrap hover:text-white/70 transition-colors"
+          >
+            ABOUT US
+          </Link>
+          <Link
+            href="/blog"
+            className="hidden md:inline whitespace-nowrap hover:text-white/70 transition-colors"
+          >
+            BLOG
+          </Link>
 
           {/* CTA — button with icon */}
           <div className="hidden md:block" onClick={() => {
@@ -554,16 +580,32 @@ export function Navbar() {
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
             <div className="flex flex-col gap-4 text-[0.95rem] text-white">
-              {navItems.map((item) => (
-                <a
-                  key={item.title}
-                  href={item.href}
-                  onClick={handleAnchorClick}
-                  className={isActive(item.href) ? "text-white" : ""}
-                >
-                  {item.title}
-                </a>
-              ))}
+              {navItems.map((item) =>
+                item.href.startsWith("#") ? (
+                  <a
+                    key={item.title}
+                    href={item.href}
+                    onClick={handleAnchorClick}
+                    className={isActive(item.href) ? "text-white" : ""}
+                  >
+                    {item.title}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.title}
+                    href={item.href}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {item.title}
+                  </Link>
+                )
+              )}
+              <Link href="/about" onClick={() => setMobileOpen(false)}>
+                ABOUT US
+              </Link>
+              <Link href="/blog" onClick={() => setMobileOpen(false)}>
+                BLOG
+              </Link>
               <div onClick={() => {
                 setMobileOpen(false);
                 const target = document.querySelector("#contact");

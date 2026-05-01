@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { Linkedin, Twitter } from 'lucide-react'
 import { smoothScrollTo } from '@/lib/smoothScroll'
 
@@ -7,18 +8,19 @@ const NAV_LINKS = [
   { label: 'Services', href: '#services' },
   { label: 'How We Work', href: '#process' },
   { label: 'Case Studies', href: '#case-studies' },
-  { label: 'About', href: '#about' },
+  { label: 'About', href: '/about' },
+  { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '#contact' },
 ]
 
 const SERVICE_LINKS = [
-  'Business Ops Automation',
-  'AI Cold Calling Agents',
-  'Social Media Automation',
-  'Outreach & Marketing',
-  'AI Chatbots',
-  'Internal Tools',
-  'Web Development',
+  { label: 'AI Chatbots', href: '/services/ai-chatbot-development' },
+  { label: 'AI Cold Calling Agents', href: '/services/voice-ai-agents' },
+  { label: 'Business Ops Automation', href: '/services/workflow-automation' },
+  { label: 'Outreach & Marketing', href: '/services/ai-marketing-automation' },
+  { label: 'AI Lead Qualification', href: '/services/ai-lead-qualification' },
+  { label: 'Custom AI Solutions', href: '/services/custom-ai-solutions' },
+  { label: 'All Services', href: '/services' },
 ]
 
 const SOCIALS = [
@@ -28,7 +30,7 @@ const SOCIALS = [
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-white/[0.06] pt-16 pb-8 px-[5vw]">
+    <footer className="relative border-t border-white/6 pt-16 pb-8 px-[5vw]">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
@@ -53,13 +55,22 @@ export function Footer() {
             <ul className="flex flex-col gap-3">
               {NAV_LINKS.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    onClick={smoothScrollTo}
-                    className="text-[0.88rem] text-white/50 hover:text-white transition-colors"
-                  >
-                    {link.label}
-                  </a>
+                  {link.href.startsWith('/') ? (
+                    <Link
+                      href={link.href}
+                      className="text-[0.88rem] text-white/50 hover:text-white transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      onClick={smoothScrollTo}
+                      className="text-[0.88rem] text-white/50 hover:text-white transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -72,10 +83,13 @@ export function Footer() {
             </h4>
             <ul className="flex flex-col gap-3">
               {SERVICE_LINKS.map((service) => (
-                <li key={service}>
-                  <span className="text-[0.88rem] text-white/50">
-                    {service}
-                  </span>
+                <li key={service.label}>
+                  <Link
+                    href={service.href}
+                    className="text-[0.88rem] text-white/50 hover:text-white transition-colors"
+                  >
+                    {service.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -117,7 +131,7 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/[0.06] pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="border-t border-white/6 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-[0.75rem] text-white/25">
             &copy; {new Date().getFullYear()} GenosAI. All rights reserved.
           </p>

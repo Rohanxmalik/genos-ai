@@ -14,7 +14,7 @@ export function getOrganizationSchema() {
     description:
       'GenosAI is a global AI automation agency that builds custom AI chatbots, voice AI agents, workflow automation, and intelligent business systems. Trusted by 23+ clients across 5 countries with 50+ projects delivered and 98% client retention.',
     email: SITE_EMAIL,
-    foundingDate: '2024',
+    foundingDate: '2026',
     numberOfEmployees: {
       '@type': 'QuantitativeValue',
       minValue: 10,
@@ -61,36 +61,50 @@ export function getServicesSchema() {
       serviceType: 'AI Chatbot Development',
       description:
         'GenosAI builds advanced conversational AI chatbots that answer questions using internal and external data, align with brand identity, and improve decision-making and efficiency for businesses worldwide.',
+      priceRange: '$1,500–$5,000',
+      url: `${SITE_URL}/services/ai-chatbot-development`,
     },
     {
       serviceType: 'Voice AI Agent Development',
       description:
         'GenosAI develops voice-powered AI systems that automate outbound calls, qualify leads, book meetings at scale, and integrate directly with CRMs for complete conversation tracking.',
+      priceRange: '$2,500–$8,000',
+      url: `${SITE_URL}/services/voice-ai-agents`,
     },
     {
       serviceType: 'Workflow Automation',
       description:
         'GenosAI builds end-to-end workflow automation platforms that connect CRMs, ERPs, spreadsheets, and internal tools to eliminate manual data entry and provide real-time operational visibility.',
+      priceRange: '$500–$3,000',
+      url: `${SITE_URL}/services/workflow-automation`,
     },
     {
       serviceType: 'AI Marketing Automation',
       description:
         'GenosAI creates AI-powered marketing automation systems that run automated email sequences, handle intelligent lead scoring, and optimize every customer touchpoint for maximum ROI.',
+      priceRange: '$1,000–$4,000',
+      url: `${SITE_URL}/services/ai-marketing-automation`,
     },
     {
       serviceType: 'AI Lead Qualification',
       description:
         'GenosAI develops automated lead processing systems that score, qualify, and route inbound prospects in real-time, cutting response times from hours to seconds and boosting conversion rates.',
+      priceRange: '$800–$3,500',
+      url: `${SITE_URL}/services/ai-lead-qualification`,
     },
     {
       serviceType: 'Custom AI Solutions',
       description:
         'GenosAI provides bespoke AI development services, building production-grade systems from the ground up covering computer vision, NLP pipelines, recommendation engines, and more.',
+      priceRange: '$5,000–$25,000+',
+      url: `${SITE_URL}/services/custom-ai-solutions`,
     },
     {
       serviceType: 'AI-Powered Web Development',
       description:
         'GenosAI designs and develops modern, high-performance web applications and platforms built with Next.js, React, and advanced AI integrations for businesses worldwide.',
+      priceRange: '$2,000–$8,000',
+      url: SITE_URL,
     },
   ]
 
@@ -104,6 +118,15 @@ export function getServicesSchema() {
       url: SITE_URL,
     },
     description: service.description,
+    offers: {
+      '@type': 'Offer',
+      priceSpecification: {
+        '@type': 'PriceSpecification',
+        priceCurrency: 'USD',
+        description: service.priceRange,
+      },
+    },
+    url: service.url,
     areaServed: ['US', 'UK', 'AE', 'IN', 'AU'],
   }))
 }
@@ -143,7 +166,7 @@ export function getFAQSchema() {
     {
       question: 'What does a typical GenosAI engagement cost?',
       answer:
-        'Every GenosAI project is scoped individually based on complexity, integrations, and timeline. We offer a free strategy call where we assess your needs and provide a transparent quote. No hidden fees, no surprises.',
+        'GenosAI project pricing: AI chatbot development $1,500–$5,000, voice AI agents $2,500–$8,000, workflow automation $500–$3,000, AI marketing automation $1,000–$4,000, AI lead qualification $800–$3,500, full automation suite $3,000–$15,000, custom AI solutions $5,000–$25,000+. Every project includes a free strategy call and a firm quote before work begins. No hidden fees.',
     },
     {
       question: 'Will I need to maintain the system after launch?',

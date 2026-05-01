@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
+import Image from 'next/image'
 import { smoothScrollTo } from '@/lib/smoothScroll'
 
 const NAV_LINKS = [
@@ -73,9 +74,16 @@ export function SiteHeader() {
         <a
           href="#hero"
           onClick={smoothScrollTo}
-          className="font-display text-[1.4rem] text-white tracking-[-0.02em]"
+          className="flex items-center"
         >
-          Genos<span className="text-white">AI</span>
+          <Image
+            src="/images/genosai-logo.png"
+            alt="GenosAI"
+            width={200}
+            height={200}
+            className="h-16 w-16 object-contain"
+            priority
+          />
         </a>
         <div className="flex items-center gap-10 text-[0.85rem] font-medium text-white tracking-[0.04em]">
           {NAV_LINKS.map((link) => (

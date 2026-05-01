@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Instrument_Serif } from "next/font/google";
 import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
 import { EtheralShadowBg } from "@/components/ui/etheral-shadow-bg";
+import { RouteBackground } from "@/components/RouteBackground";
 import { LoadingScreen } from "@/components/LoadingScreen";
 import { SpotlightCursor } from "@/components/ui/spotlight-cursor";
 import {
@@ -135,6 +136,7 @@ export default function RootLayout({
       >
         <LoadingScreen />
         <EtheralShadowBg />
+        <RouteBackground />
         <SpotlightCursor
           config={{
             radius: 150,

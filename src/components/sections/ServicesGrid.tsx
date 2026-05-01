@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import Link from 'next/link'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -10,36 +11,42 @@ gsap.registerPlugin(ScrollTrigger)
 
 const AI_SERVICES = [
   {
+    slug: 'ai-chatbot-development',
     title: 'AI Chatbot Development: Intelligent Virtual Assistants',
     description:
       'GenosAI builds advanced conversational AI chatbots that answer user questions using internal data and carefully selected external sources to deliver comprehensive, accurate results. Each chatbot is customisable in tone, style, and response behaviour to align with your brand identity, improving decision-making and operational efficiency across your organisation.',
     imageSrc: '/images/services/ai-chatbot.avif',
   },
   {
+    slug: 'voice-ai-agents',
     title: 'Voice AI Agents: Smart Calling & Communication',
     description:
       'GenosAI develops voice-powered AI systems that automate outbound calls, qualify leads, and book meetings at scale. Every voice agent integrates directly with your CRM, ensuring conversations are logged, tracked, and actionable, freeing your team to focus on closing deals instead of dialling numbers.',
     imageSrc: '/images/services/voice-ai.avif',
   },
   {
+    slug: 'workflow-automation',
     title: 'Workflow Automation: End-to-End Business Ops',
     description:
       'GenosAI builds end-to-end workflow automation platforms that connect CRMs, ERPs, spreadsheets, and internal tools to eliminate manual data entry. Custom dashboards provide real-time visibility into operations, reducing overhead, streamlining approvals, and improving team efficiency across the board.',
     videoSrc: '/videos/services/business-ops.mp4',
   },
   {
+    slug: 'ai-marketing-automation',
     title: 'AI Marketing Automation: Outreach & Campaign Engine',
     description:
       'GenosAI creates AI-powered marketing automation systems that run automated email sequences, handle intelligent lead scoring, and trigger campaigns based on user behaviour. Smart analytics track and optimise every customer touchpoint automatically, ensuring your marketing budget delivers maximum ROI consistently.',
     imageSrc: '/images/services/ai-image-gen.avif',
   },
   {
+    slug: 'ai-lead-qualification',
     title: 'AI Lead Qualification: Automated Scoring & Routing',
     description:
       'GenosAI develops automated lead processing systems where inbound prospects are scored, qualified, and routed in real-time. The engine follows a structured scoring framework for consistency and reliability, cutting response times from hours to seconds and dramatically boosting conversion rates.',
     imageSrc: '/images/services/ai-decision.avif',
   },
   {
+    slug: 'custom-ai-solutions',
     title: 'Custom AI Development: Bespoke Enterprise Solutions',
     description:
       'GenosAI provides bespoke AI development services, building production-grade systems from the ground up to meet your unique requirements. Each solution is designed to scale with your growth, covering everything from computer vision and NLP pipelines to recommendation engines and automated decision systems.',
@@ -156,6 +163,14 @@ export function ServicesGrid() {
             Every solution is designed to solve real business challenges, automate repetitive tasks,
             and deliver actionable insights that scale with your organisation.
           </p>
+          <div className="section-reveal mt-8">
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 text-sm text-violet-400 hover:text-violet-300 transition-colors border border-violet-400/30 hover:border-violet-300/50 rounded-full px-5 py-2"
+            >
+              View all services →
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -202,6 +217,12 @@ export function ServicesGrid() {
                   <p className="text-[0.9rem] leading-[1.75] text-white/50">
                     {service.description}
                   </p>
+                  <Link
+                    href={`/services/${service.slug}`}
+                    className="mt-5 inline-flex items-center gap-1.5 text-[0.82rem] font-medium text-violet-400 hover:text-violet-300 transition-colors"
+                  >
+                    Learn more →
+                  </Link>
                 </div>
               </div>
             </div>

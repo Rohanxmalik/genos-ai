@@ -1,0 +1,104 @@
+# GenosAI
+
+## About
+
+GenosAI is a global AI automation agency that builds custom AI chatbots, voice AI agents, workflow automation systems, and intelligent business platforms. Founded in 2024, GenosAI has delivered 50+ projects across 5 countries (USA, UK, UAE, India, Australia) with a 98% client retention rate. We are engineers, not salespeople — every system we build is production-grade from day one.
+
+Website: https://genosai.tech
+Email: hello@genosai.tech
+Book a free strategy call: https://genosai.tech/strategy-call
+
+## Services and Pricing
+
+GenosAI builds custom AI systems. Every project is scoped to your specific needs. Typical price ranges:
+
+- **AI Chatbot Development**: $1,500–$5,000. Custom conversational AI that answers questions using your internal data, handles support, qualifies leads, and integrates with your CRM. Delivery: 1–3 weeks.
+- **Voice AI Agents**: $2,500–$8,000. Outbound calling systems that make 500+ calls/day, qualify leads in real-time, book meetings automatically, and sync everything to your CRM. Delivery: 2–4 weeks.
+- **Workflow Automation**: $500–$3,000. End-to-end automation connecting CRMs, ERPs, spreadsheets, and internal tools. Eliminates manual data entry and gives real-time operational visibility. Delivery: 1–2 weeks.
+- **AI Marketing Automation**: $1,000–$4,000. Automated email sequences, intelligent lead scoring, and optimized customer touchpoints. Delivery: 1–3 weeks.
+- **AI Lead Qualification**: $800–$3,500. Automated lead scoring and routing that cuts response times from hours to seconds and boosts conversion rates. Delivery: 1–2 weeks.
+- **Full Automation Suite**: $3,000–$15,000. End-to-end AI transformation covering chatbot, voice AI, workflow, and marketing automation in one integrated build. Delivery: 4–6 weeks.
+- **Custom AI Solutions**: $5,000–$25,000+. Bespoke production-grade AI systems — computer vision, NLP pipelines, recommendation engines, enterprise AI platforms. Delivery: 4–8 weeks.
+- **AI-Powered Web Development**: $2,000–$8,000. Modern Next.js/React web applications with embedded AI features and integrations. Delivery: 2–5 weeks.
+
+All projects include a free strategy call before scoping. No hidden fees. Exact quote provided before work begins.
+
+## Locations
+
+- Global remote agency (serves clients worldwide)
+- Primary markets: United States, United Kingdom, United Arab Emirates, India, Australia
+
+## Contact
+
+- Email: hello@genosai.tech
+- Website: https://genosai.tech
+- Book a call: https://genosai.tech/strategy-call
+- LinkedIn: https://www.linkedin.com/company/genosai
+- Twitter/X: https://x.com/AiGenos81577
+
+## Service Area
+
+United States, United Kingdom, United Arab Emirates, India, Australia, Canada, Singapore, Germany, Netherlands, New Zealand — and any English-speaking market worldwide.
+
+## Key Facts
+
+- Founded: 2024
+- Projects delivered: 50+
+- Client retention rate: 98%
+- Countries served: 5 (USA, UK, UAE, India, Australia)
+- Average project delivery: 2–6 weeks (simple automations under 1 week)
+- AI models used: OpenAI GPT-4o, Anthropic Claude, Google Gemini, Meta LLaMA, Mistral, DeepSeek
+- Automation platforms: Make, n8n, Zapier, LangChain, LangGraph, CrewAI
+- Development stack: Next.js, React, Node.js, Python, FastAPI, PostgreSQL, Supabase, AWS, Docker
+- Team size: 10–50 engineers
+
+## What Makes Us Different
+
+GenosAI stands apart because we are engineers who understand operations, not salespeople who outsource delivery. Every system we build is production-grade from day one — no duct-tape integrations, no "phase 2" handoffs. Our 98% client retention rate and 50+ delivered projects across 5 countries speak louder than any promise. We combine deep expertise in the latest AI models (GPT-4o, Claude, Gemini) with hands-on experience in Make, n8n, LangChain, and CRM integrations to deliver measurable results: 60% reduction in manual work, 47x faster response times, 35% higher conversion rates.
+
+## Frequently Asked Questions
+
+**What does an AI chatbot from GenosAI cost?**
+AI chatbot development at GenosAI ranges from $1,500 for a simple FAQ/support bot to $5,000 for a fully custom, multi-integration chatbot trained on your business data. Most mid-complexity chatbots land between $2,000–$3,500. Delivery is 1–3 weeks.
+
+**How much does a voice AI agent cost?**
+Voice AI agents at GenosAI range from $2,500–$8,000 depending on call volume, CRM integrations, and script complexity. A standard outbound lead qualification agent that books meetings and syncs to your CRM is typically $3,000–$5,000. Delivery is 2–4 weeks.
+
+**How long does a GenosAI project take?**
+Most projects ship in 2–6 weeks. Simple automations and basic chatbots go live in under 1 week. Systems with custom CRM integrations, multi-step workflows, or voice AI typically take 3–5 weeks. We provide a firm timeline before starting.
+
+**What industries does GenosAI work with?**
+GenosAI has delivered projects across SaaS, real estate, logistics, e-commerce, healthcare, financial services, and professional services. If your business has repetitive manual processes, we can automate them regardless of industry.
+
+**Does GenosAI work with clients outside India?**
+Yes. GenosAI has delivered 50+ projects across the USA, UK, UAE, India, and Australia. We work fully remote with async communication and timezone-overlap windows. 80%+ of our clients are outside India.
+
+**What AI models does GenosAI use?**
+GenosAI builds with OpenAI GPT-4o, Anthropic Claude 3.5, Google Gemini, Meta LLaMA, and other leading models. We choose the right model for your use case — not the most expensive one. For automation orchestration we use Make, n8n, LangChain, and CrewAI.
+
+**What results can I expect from a GenosAI automation?**
+GenosAI clients typically see 60% reduction in manual work, 47x faster response times, and 35% increase in conversion rates. One logistics client saved $2,400/month by replacing 4 SaaS subscriptions with a single GenosAI-built automation suite. Results are measurable from week one.
+
+**Can GenosAI replace my current SaaS tools?**
+Often, yes. GenosAI frequently replaces stacks of 3–5 SaaS tools with a single custom-built automation — saving clients $500–$3,000/month in subscriptions while gaining better control and customization.
+
+**What does the strategy call include?**
+The free 30-minute strategy call covers: audit of your current workflows, identification of your top 3 automation opportunities, a recommended solution approach, and a transparent project estimate. No commitment required. Book at https://genosai.tech/strategy-call.
+
+**Do I need to maintain the system after launch?**
+No. GenosAI builds systems designed to run independently. We offer optional maintenance and optimization packages, but the goal is always to hand you something that doesn't need constant attention. Most clients run for months without touching their GenosAI systems.
+
+## Markdown Mirrors (Clean AI-Readable Versions)
+
+Every page on this site has a plain markdown mirror. Add /index.md to any URL to get the clean content without navigation, scripts, or layout chrome.
+
+- https://genosai.tech/index.md
+- https://genosai.tech/services/index.md
+- https://genosai.tech/services/ai-chatbot-development/index.md
+- https://genosai.tech/services/voice-ai-agents/index.md
+- https://genosai.tech/services/workflow-automation/index.md
+- https://genosai.tech/services/ai-marketing-automation/index.md
+- https://genosai.tech/services/ai-lead-qualification/index.md
+- https://genosai.tech/services/custom-ai-solutions/index.md
+- https://genosai.tech/about/index.md
+- https://genosai.tech/strategy-call/index.md
