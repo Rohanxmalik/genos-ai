@@ -92,11 +92,13 @@ export default function CardStack({ cards: initialCards }: CardStackProps) {
   return (
     <div className="relative w-full flex flex-col items-center">
       {/* Top control bar */}
-      <div className="w-full flex items-center justify-between mb-10">
+      <div className="relative z-20 w-full flex items-center justify-between mb-6 sm:mb-10">
         <div className="flex gap-2">
           <motion.button
+            type="button"
             onClick={resetCards}
-            className="p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 backdrop-blur-sm transition-colors"
+            className="p-3 rounded-full bg-white/5 hover:bg-white/10 active:bg-white/15 border border-white/10 backdrop-blur-sm transition-colors"
+            style={{ touchAction: 'manipulation' }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             title="Reset"
@@ -105,8 +107,10 @@ export default function CardStack({ cards: initialCards }: CardStackProps) {
             <RotateCcw className="w-4 h-4 text-white/80" />
           </motion.button>
           <motion.button
+            type="button"
             onClick={shuffleCards}
-            className="p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 backdrop-blur-sm transition-colors"
+            className="p-3 rounded-full bg-white/5 hover:bg-white/10 active:bg-white/15 border border-white/10 backdrop-blur-sm transition-colors"
+            style={{ touchAction: 'manipulation' }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             title="Shuffle"
@@ -116,7 +120,7 @@ export default function CardStack({ cards: initialCards }: CardStackProps) {
           </motion.button>
         </div>
 
-        <div className="flex gap-1.5">
+        <div className="hidden sm:flex gap-1.5">
           {initialCards.map((_, i) => (
             <div
               key={i}
@@ -134,6 +138,20 @@ export default function CardStack({ cards: initialCards }: CardStackProps) {
           <span className="text-white/20"> / </span>
           {String(initialCards.length).padStart(2, '0')}
         </div>
+      </div>
+
+      {/* Mobile-only dots indicator (below control bar) */}
+      <div className="flex sm:hidden gap-1.5 mb-8 relative z-20">
+        {initialCards.map((_, i) => (
+          <div
+            key={i}
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              i === currentIndex % initialCards.length
+                ? 'bg-white w-8'
+                : 'bg-white/15 w-1.5'
+            }`}
+          />
+        ))}
       </div>
 
       <div className="relative flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full">
@@ -272,23 +290,25 @@ export default function CardStack({ cards: initialCards }: CardStackProps) {
       </div>
 
       {/* Mobile-only arrow row below card */}
-      <div className="flex sm:hidden justify-center gap-4 mt-6">
-        <motion.button
+      <div className="relative z-20 flex sm:hidden justify-center gap-4 mt-6">
+        <button
+          type="button"
           onClick={moveToStart}
-          className="p-3 rounded-full bg-white/5 active:bg-white/10 border border-white/10 backdrop-blur-sm"
-          whileTap={{ scale: 0.9 }}
+          className="p-4 rounded-full bg-white/5 active:bg-white/15 border border-white/10 backdrop-blur-sm transition-colors"
+          style={{ touchAction: 'manipulation' }}
           aria-label="Previous post"
         >
-          <ChevronLeft className="w-5 h-5 text-white/80" />
-        </motion.button>
-        <motion.button
+          <ChevronLeft className="w-5 h-5 text-white/80 pointer-events-none" />
+        </button>
+        <button
+          type="button"
           onClick={moveToEnd}
-          className="p-3 rounded-full bg-white/5 active:bg-white/10 border border-white/10 backdrop-blur-sm"
-          whileTap={{ scale: 0.9 }}
+          className="p-4 rounded-full bg-white/5 active:bg-white/15 border border-white/10 backdrop-blur-sm transition-colors"
+          style={{ touchAction: 'manipulation' }}
           aria-label="Next post"
         >
-          <ChevronRight className="w-5 h-5 text-white/80" />
-        </motion.button>
+          <ChevronRight className="w-5 h-5 text-white/80 pointer-events-none" />
+        </button>
       </div>
 
       <p className="text-white/40 text-xs mt-10 text-center">
