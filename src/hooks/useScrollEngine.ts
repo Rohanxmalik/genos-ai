@@ -20,7 +20,12 @@ export function useScrollEngine() {
 
     if (isTouch) {
       const refreshId = window.setTimeout(() => ScrollTrigger.refresh(), 100)
-      return () => window.clearTimeout(refreshId)
+      const onLoaded = () => ScrollTrigger.refresh()
+      window.addEventListener('site:loaded', onLoaded)
+      return () => {
+        window.clearTimeout(refreshId)
+        window.removeEventListener('site:loaded', onLoaded)
+      }
     }
 
     const lenis = new Lenis({
@@ -39,8 +44,12 @@ export function useScrollEngine() {
     gsap.ticker.add(tickerCallback)
     gsap.ticker.lagSmoothing(0)
 
+    const onLoaded = () => { ScrollTrigger.refresh(); lenis.resize() }
+    window.addEventListener('site:loaded', onLoaded)
+
     return () => {
       gsap.ticker.remove(tickerCallback)
+      window.removeEventListener('site:loaded', onLoaded)
       lenis.destroy()
       lenisRef.current = null
     }

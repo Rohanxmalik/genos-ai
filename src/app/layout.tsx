@@ -73,14 +73,6 @@ export const metadata: Metadata = {
       "GenosAI | #1 AI Automation Agency | Custom AI Systems for Business",
     description:
       "We build custom AI chatbots, voice AI agents, workflow automation, and intelligent business systems. 50+ projects delivered across 5 countries with 98% client retention.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "GenosAI | AI Automation Agency",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -89,7 +81,6 @@ export const metadata: Metadata = {
     title: "GenosAI | #1 AI Automation Agency",
     description:
       "Custom AI chatbots, voice AI, workflow automation & intelligent systems for businesses worldwide.",
-    images: ["/og-image.png"],
   },
 };
 

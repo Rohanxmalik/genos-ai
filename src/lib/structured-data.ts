@@ -10,7 +10,7 @@ export function getOrganizationSchema() {
     '@type': 'Organization',
     name: SITE_NAME,
     url: SITE_URL,
-    logo: `${SITE_URL}/logo.png`,
+    logo: `${SITE_URL}/images/genosai-logo.png`,
     description:
       'GenosAI is a global AI automation agency that builds custom AI chatbots, voice AI agents, workflow automation, and intelligent business systems. Trusted by 23+ clients across 5 countries with 50+ projects delivered and 98% client retention.',
     email: SITE_EMAIL,

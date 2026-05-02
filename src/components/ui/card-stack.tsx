@@ -136,10 +136,10 @@ export default function CardStack({ cards: initialCards }: CardStackProps) {
         </div>
       </div>
 
-      <div className="relative flex items-center justify-center gap-4 sm:gap-6 w-full">
+      <div className="relative flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full">
         <motion.button
           onClick={moveToStart}
-          className="p-3 sm:p-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 backdrop-blur-sm transition-colors shrink-0"
+          className="hidden sm:flex p-3 sm:p-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 backdrop-blur-sm transition-colors shrink-0"
           whileHover={{ scale: 1.1, x: -3 }}
           whileTap={{ scale: 0.9 }}
           aria-label="Previous post"
@@ -147,7 +147,7 @@ export default function CardStack({ cards: initialCards }: CardStackProps) {
           <ChevronLeft className="w-5 h-5 text-white/80" />
         </motion.button>
 
-        <div className="relative w-full max-w-[480px] aspect-video overflow-visible">
+        <div className="relative w-full max-w-[480px] aspect-4/3 sm:aspect-video overflow-visible">
           <ul className="relative w-full h-full m-0 p-0">
             <AnimatePresence>
               {cards.map((card, i) => {
@@ -262,8 +262,28 @@ export default function CardStack({ cards: initialCards }: CardStackProps) {
 
         <motion.button
           onClick={moveToEnd}
-          className="p-3 sm:p-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 backdrop-blur-sm transition-colors shrink-0"
+          className="hidden sm:flex p-3 sm:p-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 backdrop-blur-sm transition-colors shrink-0"
           whileHover={{ scale: 1.1, x: 3 }}
+          whileTap={{ scale: 0.9 }}
+          aria-label="Next post"
+        >
+          <ChevronRight className="w-5 h-5 text-white/80" />
+        </motion.button>
+      </div>
+
+      {/* Mobile-only arrow row below card */}
+      <div className="flex sm:hidden justify-center gap-4 mt-6">
+        <motion.button
+          onClick={moveToStart}
+          className="p-3 rounded-full bg-white/5 active:bg-white/10 border border-white/10 backdrop-blur-sm"
+          whileTap={{ scale: 0.9 }}
+          aria-label="Previous post"
+        >
+          <ChevronLeft className="w-5 h-5 text-white/80" />
+        </motion.button>
+        <motion.button
+          onClick={moveToEnd}
+          className="p-3 rounded-full bg-white/5 active:bg-white/10 border border-white/10 backdrop-blur-sm"
           whileTap={{ scale: 0.9 }}
           aria-label="Next post"
         >

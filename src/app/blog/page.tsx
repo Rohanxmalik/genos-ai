@@ -84,7 +84,7 @@ export default function BlogPage() {
           Insights, ideas, and research
         </h1>
 
-        <p className="text-white/60 text-lg mb-16 max-w-2xl">
+        <p className="text-white/60 text-lg mb-8 sm:mb-16 max-w-2xl">
           Articles on AI automation, agentic systems, voice AI, and the bigger
           questions AI is forcing businesses and societies to reckon with.
         </p>
@@ -92,7 +92,7 @@ export default function BlogPage() {
         {posts.length === 0 ? (
           <p className="text-white/40">No posts published yet.</p>
         ) : (
-          <section className="py-12 mb-16">
+          <section className="py-4 sm:py-12 mb-6 sm:mb-16">
             <CardStack cards={stackCards} />
           </section>
         )}

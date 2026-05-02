@@ -69,6 +69,7 @@ export function LoadingScreen() {
     if (phase === "fading") {
       const timeout = setTimeout(() => {
         document.body.style.overflow = "";
+        window.dispatchEvent(new Event("site:loaded"));
         setPhase("done");
       }, 800);
       return () => clearTimeout(timeout);

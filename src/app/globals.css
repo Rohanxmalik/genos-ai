@@ -180,13 +180,17 @@
   }
   html {
     @apply font-sans;
-    scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: clip;
     width: 100%;
     max-width: 100%;
   }
+/* Smooth scroll only on desktop (pointer: fine) — Lenis handles desktop, native handles mobile */
+@media (pointer: fine) {
+  html { scroll-behavior: smooth; }
+}
+
   body {
     @apply bg-background text-foreground;
     overflow-x: clip;
