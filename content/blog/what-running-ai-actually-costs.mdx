@@ -1,0 +1,111 @@
+---
+title: "Why Your AI Bill Went Up While AI Got 98% Cheaper"
+slug: "what-running-ai-actually-costs"
+description: "The price of a token has collapsed. The average enterprise AI budget went from $1.2 million to $7 million over the same period. Both numbers are real, and the gap between them is where most AI budgets break."
+date: "2026-05-06"
+readTime: "13 min"
+tags: ["AI costs", "engineering", "business"]
+heroPrompt: "Abstract visualization of two diverging line graphs on a dark monitor, one falling and one rising, deep navy background with cool blue accents, financial-editorial technology aesthetic, 16:9"
+---
+
+The per-token cost of frontier-model intelligence has fallen roughly 98% since early 2024. Over a slightly longer window, the decline is closer to a thousandfold — one of the fastest cost collapses in the history of computing.
+
+Over that same stretch, the average enterprise AI budget grew from about $1.2 million a year to roughly $7 million.
+
+Both of those things are true at once. Prices per unit fell off a cliff, and total spend went up anyway. This isn't a paradox so much as a predictable consequence of how these systems get used — but it catches finance teams and engineering leads with equal regularity.
+
+The FinOps Foundation's 2026 State of FinOps report, drawn from nearly 1,200 practitioners collectively responsible for more than $83 billion in annual cloud spend, found that 73% of respondents saw AI costs exceed their original budget projections. Agentic projects specifically overshot by an average factor of 2.4. In two years, the share of FinOps teams actively managing AI spend went from 31% to 98%.
+
+That last number is the tell. Almost nobody was watching this line item in 2024. Almost everybody is now.
+
+## Unit Price Is the Wrong Thing to Watch
+
+The mistake is straightforward: teams budget by multiplying expected request volume by a published per-million-token rate, watch that rate fall, and assume they have headroom.
+
+What they miss is that tokens per unit of work is not a constant. It has been climbing at least as fast as prices have fallen, and it climbs specifically when you move from a demo to something useful.
+
+A single chatbot turn is one request with a modest context. An agentic workflow that reads a codebase, plans a change, calls four tools, checks its own output, and retries a failed step is doing something structurally different. Enterprise data from 2026 puts agentic workflows at 5 to 30 times the tokens per task of a standard chatbot query.
+
+The academic measurement is harsher still. A 2026 paper titled *How Do AI Agents Spend Your Money? Analyzing and Predicting Token Consumption in Agentic Coding Tasks* — whose authors include Erik Brynjolfsson and Alex Pentland — found that agentic coding tasks consume on the order of **1,000 times more tokens** than ordinary code chat on comparable problems.
+
+Critically, the dominant cost driver is *input* tokens, not output. Every reasoning step re-reads accumulated context: the original instruction, prior tool results, intermediate conclusions. A ten-step agent doesn't pay for one context window. It pays for something closer to ten overlapping ones, each larger than the last.
+
+This is why "the model got cheaper" fails to show up in the invoice. The unit got cheaper. You started buying far more units per task, and you started running far more tasks.
+
+## The Variance Problem Is Worse Than the Average
+
+Averages are what get budgeted. Variance is what breaks budgets.
+
+The same paper found that repeated runs of an agent **on an identical task** can differ by up to 30x in total token consumption. Not across different tasks — the same task, the same agent, a different outcome. Token usage is inherently stochastic: an agent that takes a wrong turn on step three and has to recover burns a multiple of what a clean run costs.
+
+Three findings compound the problem:
+
+**Models cannot predict their own consumption.** Asked to estimate what a task would cost them, frontier models showed only weak-to-moderate correlation with reality — up to 0.39 — and systematically *underestimated* actual spend.
+
+**Human difficulty estimates fare no better.** Expert ratings of task difficulty correlate weakly with actual compute demand. Intuition is not a costing method here.
+
+**Spending more doesn't reliably buy accuracy.** Optimal performance frequently occurs at intermediate cost levels, not at the top of the range.
+
+Put those together and the planning implication is uncomfortable: you cannot derive a reliable per-task cost from a spec, from expert judgment, or by asking the model. You only get it by measuring real runs, including the ugly ones.
+
+Model choice compounds this. The same research found spreads of roughly 1.5 million tokens between models on identical tasks — a routing decision with direct budget consequences, invisible if you're only comparing headline per-token rates.
+
+## Inference Is the Budget, Not Training
+
+There's a lingering mental model in which AI spend means buying training compute. For nearly every company that isn't a frontier lab, that hasn't been true for a while. Somewhere between 80% and 90% of enterprise AI expenditure now goes to inference — the cost of *running* models, not building them.
+
+That changes the shape of the financial risk. A training budget is a number you approve once. An inference budget is a meter that spins faster every time the product succeeds, which makes rising adoption financially indistinguishable from a cost overrun — an awkward conversation when the product is working exactly as intended.
+
+The AI share of cloud budgets reflects the shift: roughly 4% in 2023, about 18% by 2026 among AI-active companies.
+
+## The Costs That Aren't Tokens
+
+Even a perfectly forecast token bill covers only part of the real number. The line items that don't appear in any API pricing page routinely add 30% to 60% on top of the headline estimate — and 60% to 100% in regulated sectors.
+
+### Human review
+
+This is the one most often left out, and frequently the largest. A customer support chatbot handling around 1,000 conversations a day might cost $500 to $1,500 monthly in API fees. The human review pipeline behind it — people checking escalations, correcting bad answers, labelling failures for improvement — commonly runs 5 to 10 times that.
+
+That ratio isn't a sign of failure — any system touching customers needs a correction loop. But if the business case was built on the API number alone, the project looks like it tripled in cost when it merely revealed its actual cost.
+
+### Evaluation
+
+Eval suites cost money to build and to run, because running them means paying for inference on every test case, on every change. Teams that skip evals to save money pay later in production incidents, which cost more and land at worse times.
+
+### Observability
+
+Logging every tool call, prompt, and response for systems that generate enormous volumes of text is a real storage and tooling cost. It's also the difference between diagnosing a failure in an hour and diagnosing it in a week.
+
+### Retries, guardrails, and framework overhead
+
+Retry logic multiplies token spend precisely when things are already going wrong. Guardrail checks are additional model calls. Agent frameworks inject scaffolding into context on every step. None of it appears in a napkin estimate, and all of it is invisible without instrumentation.
+
+### Maintenance
+
+Over a two-to-three-year horizon, ongoing costs — prompt updates as models change, re-tuning as data shifts, compliance work, migrations when a provider deprecates a model — often account for the majority of total cost of ownership.
+
+## What Actually Controls the Bill
+
+The teams that keep AI spend predictable tend to do the same handful of things.
+
+**Measure cost per outcome, not cost per token.** The meaningful unit is "cost per resolved support ticket" or "cost per qualified lead." It's the only framing that compares cleanly against the manual process you're replacing, and it stays stable when providers reprice.
+
+**Instrument before scaling.** Per-task cost attribution needs to exist before volume grows, not after the first surprising invoice. You cannot optimize what you cannot attribute.
+
+**Route by difficulty.** Most production workloads contain a large share of easy cases. Sending all of them to the most capable available model is the most common source of avoidable spend.
+
+**Cache aggressively.** Since input tokens dominate agentic cost, prompt caching and context reuse attack the largest component directly.
+
+**Budget for the distribution, not the mean.** Given 30x run-to-run variance, plan against a high percentile and set hard per-task token ceilings, so a pathological run fails loudly and cheaply instead of quietly draining a monthly allocation.
+
+**Constrain context deliberately.** Agents that accumulate unbounded context get more expensive with every step. Summarizing or pruning between steps controls the compounding directly.
+
+---
+
+None of this argues against building on AI. Falling unit prices are real, and workloads that were economically impossible in 2024 are routine now. That's precisely why volume expands — and expanding volume against falling prices still produces a rising bill.
+
+The failure mode isn't overspending. It's *unplanned* spending — discovering the true cost structure after committing to a deployment, rather than during design, when the architecture can still absorb the answer.
+
+If you're scoping an AI system now, three questions are worth answering early. What does one completed task cost, measured on real runs rather than estimated? What does the 95th-percentile run cost, not the average? And what happens to the monthly number if adoption comes in at three times forecast — is that a success or a crisis?
+
+Teams that can answer those rarely get surprised by an invoice. We work through them at design time on every [custom AI solution](/services/custom-ai-solutions) we build.
