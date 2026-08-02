@@ -1,6 +1,6 @@
 # Hero Image Prompts
 
-Detailed prompts for the 8 blog hero images. Style reference: annotated infographic (Scientific American / National Geographic / Wired editorial feature) — photoreal central subject, dark navy background, thin white callout lines with small circular icon insets, English labels, bottom strip of 4 mini data cards.
+Detailed prompts for the 9 blog hero images. Style reference: annotated infographic (Scientific American / National Geographic / Wired editorial feature) — photoreal central subject, dark navy background, thin white callout lines with small circular icon insets, English labels, bottom strip of 4 mini data cards.
 
 Save each output as `public/blog/<slug>.webp` (or `.png` / `.jpg`) at the project root.
 
@@ -57,10 +57,16 @@ A cinematic 16:9 editorial infographic in the style of a Wired magazine technica
 
 ---
 
+## 9. what-running-ai-actually-costs.webp
+
+A cinematic 16:9 editorial infographic in the style of a Bloomberg Businessweek annotated data feature, deep navy background fading to dark indigo with a subtle cool blue ambient glow. Centerpiece: two bold photoreal glowing line graphs crossing in an X through the middle of the frame — one descending line rendered in cool cyan labelled "Price per Token", one ascending line rendered in warm amber labelled "Total AI Bill" — with soft bloom at the crossing point and a faint grid plane receding beneath them in perspective. Thin white annotation lines extend outward from points along both curves to six labeled callouts, each with a small circular icon (stacked coins, branching agent tree, repeat/retry arrows, magnifying glass over a checklist, human silhouette, database) and clean sans-serif white English labels: "Unit Price -98%", "5-30x Tokens per Agentic Task", "Retry Amplification", "Eval + Observability", "Human Review Loop", "Context Re-read Cost". At the bottom, a horizontal strip of four small infographic data cards with mini-icons displaying: "73% Over Budget", "2.4x Agentic Overshoot", "80-90% Spend Is Inference", "30x Same-Task Variance". Subtle ledger/graph-paper grid overlay across the background. Editorial financial-technology aesthetic, sharp focus, dark moody lighting, cool blue with selective warm amber accent on the rising curve only. 16:9.
+
+---
+
 ## Style Notes (apply to all)
 
 - **Aspect ratio:** strictly 16:9 (1792×1024 for DALL-E, `--ar 16:9` for Midjourney)
-- **Background:** consistently dark navy / deep indigo across all 8 (so the blog grid feels cohesive)
+- **Background:** consistently dark navy / deep indigo across all 9 (so the blog grid feels cohesive)
 - **Accent palette:** cool blue (#3b82f6 / #6366f1) + violet (#8b5cf6) + selective warm amber/red only for the failure-modes post
 - **Typography on labels:** clean modern sans-serif, white, restrained
 - **Subject scale:** central subject takes 50-60% of the frame, with breathing room for the callout lines
