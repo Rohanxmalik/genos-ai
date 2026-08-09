@@ -44,3 +44,6 @@ test-results/
 
 # claude code
 .claude/
+
+# private fundraising material - never commit to a public repo
+investor/

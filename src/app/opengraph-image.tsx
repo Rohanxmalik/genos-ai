@@ -73,8 +73,8 @@ export default function Image() {
           }}
         >
           {[
-            { value: '50+', label: 'Projects Delivered' },
-            { value: '98%', label: 'Client Retention' },
+            { value: '43', label: 'Projects Delivered' },
+            { value: '2026', label: 'Founded' },
             { value: '5', label: 'Countries' },
           ].map((stat) => (
             <div

@@ -231,7 +231,7 @@ export function WhyGenosAI() {
         {/* Standalone text block */}
         <div ref={row3Ref} className="mb-20">
           <p className="text-[1rem] leading-[1.8] text-white/40 max-w-3xl">
-            GenosAI helps organisations reduce manual work, improve decision-making, and increase overall efficiency. With 50+ projects delivered, a 98% client retention rate, and operations spanning 5 countries, GenosAI has established itself as one of the most reliable AI automation partners for growth-focused businesses worldwide.
+            GenosAI helps organisations reduce manual work, improve decision-making, and increase overall efficiency. With 43 client projects delivered by our founder and operations spanning 5 countries, GenosAI has established itself as one of the most reliable AI automation partners for growth-focused businesses worldwide.
           </p>
         </div>
 

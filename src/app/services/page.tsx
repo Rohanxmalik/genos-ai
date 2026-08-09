@@ -133,8 +133,8 @@ export default function ServicesPage() {
         </h1>
         <p className="text-white/60 text-lg mb-12 max-w-2xl">
           GenosAI builds production-grade AI systems that eliminate manual work
-          and drive measurable results. 50+ projects delivered. 98% client
-          retention. Projects ship in 2–6 weeks.
+          and drive measurable results. 43 client projects delivered by our
+          founder. Projects ship in 2–6 weeks.
         </p>
 
         <div className="grid md:grid-cols-2 gap-6">

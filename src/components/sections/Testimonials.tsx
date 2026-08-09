@@ -85,7 +85,7 @@ export function Testimonials() {
             GenosAI Client Testimonials
           </h2>
           <p className="text-center mt-5 text-[1.05rem] leading-[1.65] text-white/50">
-            Trusted by businesses across five countries with a 98% client retention rate. They keep coming back.
+            Trusted by businesses across five countries. They keep coming back.
           </p>
         </motion.div>
 
