@@ -26,9 +26,9 @@ const initialFormData: FormData = {
 }
 
 const TRUST_STATS = [
-  { value: '50+', label: 'Projects Delivered', icon: Zap },
-  { value: '23+', label: 'Clients Worldwide', icon: Users },
-  { value: '98%', label: 'Client Retention', icon: Shield },
+  { value: '43', label: 'Projects Delivered', icon: Zap },
+  { value: '5', label: 'Countries Served', icon: Users },
+  { value: '2-6 wks', label: 'Typical Delivery', icon: Shield },
 ]
 
 function validateField(name: keyof FormData, value: string): string {

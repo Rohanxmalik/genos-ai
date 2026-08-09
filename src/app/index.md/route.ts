@@ -8,7 +8,7 @@ last_updated: ${new Date().toISOString().split('T')[0]}
 
 # GenosAI — AI Automation Agency
 
-GenosAI is a global AI automation agency that builds custom AI chatbots, voice AI agents, workflow automation systems, and intelligent business platforms. Founded in 2026. 50+ projects delivered across 5 countries. 98% client retention rate.
+GenosAI is a global AI automation agency that builds custom AI chatbots, voice AI agents, workflow automation systems, and intelligent business platforms. Founded in 2026. 43 client projects delivered by our founder across 5 countries.
 
 ## What We Build
 

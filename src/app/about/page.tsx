@@ -4,7 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'About — AI Automation Agency',
   description:
-    'GenosAI is a global AI automation agency founded in 2026. 50+ projects delivered. 98% client retention. Serving clients across USA, UK, UAE, India, and Australia.',
+    'GenosAI is a global AI automation agency founded in 2026, building on 43 client projects delivered by our founder across USA, UK, UAE, India, and Australia.',
   alternates: { canonical: 'https://genosai.tech/about' },
 }
 
@@ -13,7 +13,7 @@ const aboutSchema = {
   '@type': 'AboutPage',
   name: 'About GenosAI',
   description:
-    'GenosAI is a global AI automation agency that builds custom AI chatbots, voice AI agents, workflow automation systems, and intelligent business platforms. Founded in 2026 with 50+ projects delivered across 5 countries.',
+    'GenosAI is a global AI automation agency that builds custom AI chatbots, voice AI agents, workflow automation systems, and intelligent business platforms. Founded in 2026, building on 43 client projects delivered by our founder across 5 countries.',
   url: 'https://genosai.tech/about',
   publisher: {
     '@type': 'Organization',
@@ -27,8 +27,8 @@ const aboutSchema = {
 }
 
 const stats = [
-  { value: '50+', label: 'Projects Delivered' },
-  { value: '98%', label: 'Client Retention Rate' },
+  { value: '43', label: 'Projects Delivered' },
+  { value: '2 yrs', label: 'Building AI Systems' },
   { value: '5', label: 'Countries Served' },
   { value: '2026', label: 'Year Founded' },
 ]

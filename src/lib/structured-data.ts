@@ -12,7 +12,7 @@ export function getOrganizationSchema() {
     url: SITE_URL,
     logo: `${SITE_URL}/images/genosai-logo.png`,
     description:
-      'GenosAI is a global AI automation agency that builds custom AI chatbots, voice AI agents, workflow automation, and intelligent business systems. Trusted by 23+ clients across 5 countries with 50+ projects delivered and 98% client retention.',
+      'GenosAI is a global AI automation agency that builds custom AI chatbots, voice AI agents, workflow automation, and intelligent business systems. Founder-led delivery of 43 client projects across 5 countries: USA, UK, UAE, India, and Australia.',
     email: SITE_EMAIL,
     foundingDate: '2026',
     numberOfEmployees: {
@@ -136,7 +136,7 @@ export function getFAQSchema() {
     {
       question: 'What is GenosAI?',
       answer:
-        'GenosAI is a global AI automation agency that builds custom AI chatbots, voice AI agents, workflow automation systems, and intelligent business platforms. Headquartered in India and serving clients across the USA, UK, UAE, India, and Australia, GenosAI has delivered 50+ projects with a 98% client retention rate.',
+        'GenosAI is a global AI automation agency that builds custom AI chatbots, voice AI agents, workflow automation systems, and intelligent business platforms. Headquartered in India and serving clients across the USA, UK, UAE, India, and Australia, GenosAI builds on 43 client projects delivered by our founder across those markets.',
     },
     {
       question: 'What AI technologies does GenosAI use?',
@@ -146,7 +146,7 @@ export function getFAQSchema() {
     {
       question: 'How is GenosAI different from other AI agencies?',
       answer:
-        'GenosAI stands out with a 98% client retention rate, 50+ delivered projects, and presence across 5 countries. We are engineers, not salespeople. Every system we build is production-grade from day one. We combine deep AI expertise with operational understanding, delivering measurable results like 60% reduction in manual work and 47x faster response times for our clients.',
+        'GenosAI stands out with 43 client projects delivered by our founder across 5 countries. We are engineers, not salespeople. Every system we build is production-grade from day one. We combine deep AI expertise with operational understanding, delivering measurable results like 60% reduction in manual work and 47x faster response times for our clients.',
     },
     {
       question: 'What kind of businesses does GenosAI work with?',

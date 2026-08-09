@@ -1,7 +1,7 @@
 export async function GET() {
   const content = `---
 title: About GenosAI | AI Automation Agency
-description: GenosAI is a global AI automation agency founded in 2026. 50+ projects delivered. 98% client retention. Serving clients across USA, UK, UAE, India, and Australia.
+description: GenosAI is a global AI automation agency founded in 2026, building on 43 client projects delivered by our founder across USA, UK, UAE, India, and Australia.
 url: https://genosai.tech/about
 last_updated: ${new Date().toISOString().split('T')[0]}
 ---
@@ -12,8 +12,8 @@ GenosAI is a global AI automation agency founded in 2026. We build production-gr
 
 ## Key Stats
 
-- **50+** projects delivered
-- **98%** client retention rate
+- **43** client projects delivered by our founder
+- **5** countries served
 - **5** countries served (USA, UK, UAE, India, Australia)
 - **2026** year founded
 
