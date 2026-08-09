@@ -26,7 +26,7 @@ const initialFormData: FormData = {
 }
 
 const TRUST_STATS = [
-  { value: '43', label: 'Projects Delivered', icon: Zap },
+  { value: '23', label: 'Projects Delivered', icon: Zap },
   { value: '5', label: 'Countries Served', icon: Users },
   { value: '2-6 wks', label: 'Typical Delivery', icon: Shield },
 ]
