@@ -13,6 +13,7 @@ import {
   getWebPageSchema,
 } from "@/lib/structured-data";
 import { WhatsAppWidget } from "@/components/WhatsAppWidget";
+import { BackButton } from "@/components/BackButton";
 import "./globals.css";
 
 const instrumentSerif = Instrument_Serif({
@@ -137,6 +138,7 @@ export default function RootLayout({
           }}
         />
         <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        <BackButton />
         <WhatsAppWidget />
       </body>
     </html>
